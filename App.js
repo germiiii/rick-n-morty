@@ -1,17 +1,35 @@
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import './App.css';
 import Cards from './components/Cards/Cards';
 import Nav from './components/Nav/Nav';
 import axios from 'axios';
-import { Outlet, Route,Routes } from 'react-router-dom';
+import { Route,Routes, useLocation, useNavigate } from 'react-router-dom';
 import About from './views/About/About';
 import Detail from './views/Detail/Detail';
+import Form from './components/Form/Form'
 
 
 function App() {
+   const navigate = useNavigate();
+   const [access , setAccess ] = useState(false);
    const [characters, setCharacters] = useState([]);
+   const location = useLocation();
+   const EMAIL = 'Rick@emaildelespacio.com'
+   const PASSWORD = 'morty1'
 
-
+   function login (userData) {
+      if (userData.password === PASSWORD && userData.email === EMAIL)
+      {
+         setAccess(true);
+         navigate('/home')
+      }else{
+         alert('A donde vamos lokito?')
+      }
+   }
+   useEffect(()=>{
+      !access && navigate('/');
+   },[access , navigate]);
+   
    function onSearch(id) {
       axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
          if (data.name) {
@@ -30,12 +48,12 @@ function App() {
    // 
    return (
       <div className='App'>
-         <Nav onSearch={onSearch} />
+         {location.pathname !== '/' && <Nav onSearch={onSearch} />}
          <Routes>
-         <Route path='/' element={<Outlet />} />
-         <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
-         <Route path='/about' Component={About} />
-         <Route path='/detail/:id' Component={Detail} />
+         {location.pathname === '/' && <Route path='/' element={<Form login={login}/>} />}
+         {location.pathname === '/home' && <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />}
+         {location.pathname ==='/about' && <Route path='/about' Component={About} />}
+         {location.pathname === '/detail/:id' && <Route path='/detail/:id' Component={Detail} />}
          </Routes>
       </div>
    );
