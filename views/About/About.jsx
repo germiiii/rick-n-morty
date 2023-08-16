@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import Button from "../../components/Button/Button";
+
 const About = () => {
     return (
         <>
@@ -11,7 +14,7 @@ const About = () => {
             (por alguna razon no, tiene siencia y violencia, que mas?)
         </p>
 
-        <button>pa la casa</button>
+        <Button><Link to='/home'>pa la casa</Link></Button>
         </>
     );
 };

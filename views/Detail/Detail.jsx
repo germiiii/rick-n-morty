@@ -1,35 +1,43 @@
+import React from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useState,useEffect } from "react";
+import Card from "../../components/Card/Card";
 
 const Detail = () => {
 
-    const { id } = useParams()
+    const [characterDetail , setCharacterDetail] = useState({});
+    const { id } = useParams();
 
-    const [character, setCharacter] = useState({})
 
     useEffect(() => {
         axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
            if (data.name) {
-              setCharacter(data);
+              setCharacterDetail(data);
            } else {
               window.alert('No hay personajes con ese ID');
            }
         });
-        return setCharacter({});
+        return setCharacterDetail({}); //wilUnmount cuando me retiro del detail 
      }, [id]);
 
-    return (
-        <>
-        <h1>DETAIL</h1>
-        <h2>Status: {status}</h2>
-        <h2>Species: {species}</h2>
-        <h2>Gender: {gender}</h2>
-        <h2>Origin: {origin.name}</h2>
-        <img src={image} alt='Photo not found' />
-        <button>pa la casa</button>
-        </>
+     return (
+      <div>
+         {characterDetail.name ?(
+        <Card 
+              key={characterDetail.id}
+              id={characterDetail.id}
+              name={characterDetail.name}
+              species={characterDetail.species}
+              gender={characterDetail.gender}
+              image={characterDetail.image}
+              onClose={false}
+              origin={characterDetail.origin}
+              />
+      ):(
+         <div>Loading ...</div>
+         )}
+      </div>
     );
-};
-
-export default Detail
+        }
+export default Detail;

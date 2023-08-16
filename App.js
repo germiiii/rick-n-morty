@@ -1,12 +1,14 @@
-import { useState , useEffect} from 'react';
 import './App.css';
-import Cards from './components/Cards/Cards';
-import Nav from './components/Nav/Nav';
+import { useState , useEffect} from 'react';
 import axios from 'axios';
 import { Route,Routes, useLocation, useNavigate } from 'react-router-dom';
+//!componentes 
+import Nav from './components/Nav/Nav';
 import About from './views/About/About';
 import Detail from './views/Detail/Detail';
 import Form from './components/Form/Form'
+import Cards from './components/Cards/Cards';
+import Favorite from './components/Favorites/Favorite';
 
 
 function App() {
@@ -47,13 +49,14 @@ function App() {
    // antes de utilizar el metodo filter parseamos el id recibido a un entero, luego filtramos y dejamos todos los elementos que no sean el elemento buscado
    // 
    return (
-      <div className='App'>
+      <div className='background'>
          {location.pathname !== '/' && <Nav onSearch={onSearch} />}
          <Routes>
-         {location.pathname === '/' && <Route path='/' element={<Form login={login}/>} />}
-         {location.pathname === '/home' && <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />}
-         {location.pathname ==='/about' && <Route path='/about' Component={About} />}
-         {location.pathname === '/detail/:id' && <Route path='/detail/:id' Component={Detail} />}
+         <Route path='/' element={<Form login={login}/>} />
+         <Route path='/home' element={<Cards characters={characters} onClose={onClose} />} />
+         <Route path='/about' element={<About/>} />
+         <Route path='/detail/:id' element={<Detail />} />
+         <Route path='/favorites' element={<Favorite />}/>
          </Routes>
       </div>
    );

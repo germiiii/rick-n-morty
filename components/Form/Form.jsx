@@ -1,6 +1,7 @@
 import { useState } from "react";
 import validation from "./validation";
 import Styles from './Form.module.css';
+import Button from '../Button/Button.jsx'
 
 let {myError} = Styles
 
@@ -54,7 +55,7 @@ const Form = ({ login }) => {
                        onChange={handleChange} 
                        className={errors.password && myError}/>
             </div>
-            <button type="submit">Submit</button>
+            <Button type="submit">Submit</Button>
         </form>
     )
 }

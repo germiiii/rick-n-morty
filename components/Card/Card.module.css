@@ -1,0 +1,60 @@
+.card {
+    flex: 1 1 300px;
+    max-width: 300px;
+    background-color: #222831;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    margin: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    flex-wrap: wrap;
+  }
+  
+  .favorite {
+    align-self: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .favoriteButton {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  .closeButton {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+  
+  .title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .link {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  
+  .image {
+    align-self: center;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+  }
