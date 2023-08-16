@@ -1,30 +1,32 @@
 import React, { useEffect,useState } from 'react'; //por una cuestion de testing React.useState
 import { Link } from 'react-router-dom';
 import { addFav,removeFav } from '../../redux/actions';
-import { connect } from 'react-redux'
+import { connect, useDispatch, useSelector } from 'react-redux'
 import Button from '../Button/Button';
 import styles from './Card.module.css'
 
 
-const Card = ({ onClose, name, status, species, gender, origin, image ,id , addFavorites, removeFavorites, myFavorites}) => {
+const Card = ({ onClose, name, status, species, gender, origin, image ,id}) => {
    
   const [isFav, setIsFav] = useState (false)
+  let dispatch = useDispatch();
+  let miFav = useSelector(state => state.myFavorites);
 
   useEffect(()=> {
-    myFavorites.forEach((fav) => {
+    miFav.forEach((fav) => {
       if (fav.id === id) {
         setIsFav(true);
       }
     });
-  },[myFavorites])
+  } , [miFav])
 
   const handleFavorite = () => {
     if (isFav){
       setIsFav(false)
-      removeFavorites(id)
+      dispatch(removeFav(id))
     } else {
       setIsFav(true)
-      addFavorites({name,status,species,image,id})
+      dispatch(addFav({name,species,image,id,gender}))
     }
   }
   
@@ -41,9 +43,9 @@ const Card = ({ onClose, name, status, species, gender, origin, image ,id , addF
           </Button>
         )}
       </div>
-      <Button onClick={() => onClose(id)} className={styles.closeButton}>
-        X
-      </Button>
+      {
+      onClose ? <Button onClick={() => onClose(id)} className={styles.closeButton}>X</Button> : null
+      }
       <h2 className={styles.title}>
         Id: {id} - <Link to={`/detail/${id}`} className={styles.link}>{name}</Link>
       </h2>

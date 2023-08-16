@@ -1,0 +1,51 @@
+.detail {
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.67);
+    color: #ffffff;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    margin: 10px;
+    box-shadow: 0 2px 4px rgba(255, 255, 255, 0.2);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .favorite {
+    align-self: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .favoriteButton {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  
+  .title {
+    font-size: 24px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+  
+  .subtitle {
+    font-size: 18px;
+    margin-bottom: 7px;
+
+  }
+  
+  .image {
+    align-self:center;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 5px;
+    flex-direction: row;
+    box-shadow: 0 4px 8px 0 rgba(17, 255, 0, 0.757), 0 6px 20px 0 rgba(0, 0, 0, 0.19); /* Add shadow */
+    margin: 2rem; /* Add margin */
+  }
