@@ -19,6 +19,9 @@ export default function SearchBar({onSearch}) {
          <input type="search" className={styles.input} placeholder="Search character..." onChange={handleChange}/>
          <Button onClick={()=>{onSearch(character)}}>Agregar</Button>
          <Button onClick={handleRandomize}>Random</Button>
+         <Button onClick={handleRandomize}>Random</Button>
+         <Button onClick={handleRandomize}>Random</Button>
+         <Button onClick={handleRandomize}>Random</Button>
          </div>
       </div>
    );
