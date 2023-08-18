@@ -27,7 +27,7 @@ switch(action.type){
             myFavorites: allCharacters.filter(gen => gen.gender === action.payload)
         }
     case ORDER:
-        const sortedCharacters = state.myFavorites.slice.sort((a,b)=> {
+        const sortedCharacters = state.myFavorites.slice().sort((a,b)=> {
             if (action.payload ==='A'){
                 return a.id - b.id;
             }else{

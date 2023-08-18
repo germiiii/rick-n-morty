@@ -1,8 +1,9 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Card from "../Card/Card";
 import { filterCards, orderCards } from "../../redux/actions";
+
 
 export default function Favorites (){
     let favs = useSelector(state => state.myFavorites);
@@ -14,14 +15,16 @@ export default function Favorites (){
     const handleFilter = (event) => {
         dispatch(filterCards(event.target.value));
     };
-    useEffect(()=>{} , [favs]);
-
-    return(
+    // useEffect(()=>{} , [favs]);
+    // if (!favs || favs.length === 0) {
+    //     return (<div>No hay tarjetas favoritas para mostrar.</div>)
+    // }else{
+      return(
         <div>
             <div>
                 <select name="order" onChange={handleOrder}>
                     <option value='A'>Ascendente</option>
-                    <option value='D'>Decendente</option>
+                    <option value='B'>Decendente</option>
                 </select>
 
                 <select name="gender" onChange={handleFilter}>
@@ -32,14 +35,16 @@ export default function Favorites (){
                 </select>
             </div>
             {favs?.map(fav => (
+                console.log(fav),
                 <Card
                     name={fav.name}
                     id={fav.id}
                     key={fav.id}
                     gender={fav.gender}
-                    image={fav.image} 
+                    image={fav.image}
+                    origin={fav.origin}
                 />
             ))}
+
         </div>
-    )
-}
+    )}

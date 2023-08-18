@@ -52,7 +52,7 @@ const Card = ({ onClose, name, status, species, gender, origin, image ,id}) => {
       <h3 className={styles.subtitle}>Status: {status}</h3>
       <h3 className={styles.subtitle}>Species: {species}</h3>
       <h3 className={styles.subtitle}>Gender: {gender}</h3>
-      <h3 className={styles.subtitle}>Origin: {origin.name}</h3>
+      <h3 className={styles.subtitle}>Origin: {origin?.name}</h3>
       <img src={image} alt='Photo not found' className={styles.image} />
     </div>
   );
