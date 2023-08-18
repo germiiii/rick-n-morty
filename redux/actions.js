@@ -29,5 +29,10 @@ export const orderCards = (orden) => {
         payload: orden
     }
 }
-
+export const removeFilters = () => {
+    return{
+    type: FILTER,
+    payload: ''
+    }
+}
 //cuando nosotros presionemos un boton este generara un evento que hara un dispatch de este objeto al reducer 
